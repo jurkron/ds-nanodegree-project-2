@@ -9,17 +9,20 @@ This project creates a machine learning pipeline to categorize these events in o
 
 This project needs the following requirement to run:
 
-    [Python3](https://www.python.org)
+* [Python3](https://www.python.org)
 
 further libraries are used and should be preinstalled 
 
-    [pandas](https://pandas.pydata.org/) 
-    [sqlalchemy](https://www.sqlalchemy.org/)
-    [sklearn](https://scikit-learn.org/)
+* [pandas](https://pandas.pydata.org/) 
+* [sqlalchemy](https://www.sqlalchemy.org/)
+* [sklearn](https://scikit-learn.org/)
 
 ### Files
 
 #### app
+
+    run.py - script to run the app
+    templates/.html - html templates
 
 #### data
 
@@ -27,6 +30,9 @@ further libraries are used and should be preinstalled
     disaster_categories.csv - contains categories for the messages
     process_data.py - python script with the ETL pipeline 
 
+#### models
+
+    train_classifier.py - script with the nlp pipeline to build the machine learning model
 ### Instructions:
 1. Run the following commands in the project's root directory to set up your database and model.
 
