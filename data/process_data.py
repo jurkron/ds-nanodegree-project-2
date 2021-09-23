@@ -48,6 +48,10 @@ def clean_data(df):
     # remove duplicates
     df.drop_duplicates(inplace=True)
 
+    # Remove rows with values not in [0,1]
+    for column in categories:
+        df = df.loc[df[column] <= 1 ]
+        
     return df
 
 def save_data(df, database_filename):
