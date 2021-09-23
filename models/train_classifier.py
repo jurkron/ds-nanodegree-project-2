@@ -15,6 +15,17 @@ from sklearn.metrics import f1_score, precision_score, recall_score
 from sklearn.model_selection import GridSearchCV
 
 def load_data(database_filepath):
+    '''
+    Load dataset from given SQLite Database.
+
+    INPUT
+    database_filepath: file path to the database file
+
+    OUTPUT
+    X: Dataset containing the messages for train and test
+    y: Dataset containing all categories for X used in train and test
+    category_name: a list of category names, these are the column names of y
+    '''
     engine = create_engine('sqlite:///'+database_filepath)
     df = pd.read_sql_table('disaster_messages', con=engine)
     X = df['message']
@@ -24,6 +35,15 @@ def load_data(database_filepath):
     return X, y, category_names
 
 def tokenize(text):
+    '''
+    Tokenizes the given text.
+
+    INPUT
+    text: a string to tokenize
+
+    OUTPUT
+    clean_tokens: a cleaned lemmatized array of the given INPUT
+    '''
     # text in lower case and remove all characters that are not numbers or 
     # word character
     text = re.sub(r'[^\w\s]', ' ', text.lower())
@@ -46,6 +66,9 @@ def tokenize(text):
 
 
 def build_model():
+    '''
+    Returns a model by using a pipeline with different transformers and a multi output classifier. 
+    '''
     pipeline = Pipeline([
         ('vect', CountVectorizer(tokenizer=tokenize)),
         ('tfidf', TfidfTransformer()),
@@ -63,7 +86,13 @@ def build_model():
 
 def evaluate_model(model, X_test, y_test, category_names):
     '''
-    The f1 score, precision and recall for the test set is outputted for each category.
+    The f1 score, precision and recall for the given test dataset is printed out for each category.
+
+    INPUT
+    model: the model to test
+    X_test: a dataset used to make predictions on the given model
+    y_test: a dataset containing the true responses on X_test, to evaluate the predictions against
+    category_names: list of the category names of y_test
     '''
     y_pred = model.predict(X_test)
 
@@ -82,6 +111,13 @@ def evaluate_model(model, X_test, y_test, category_names):
 
 
 def save_model(model, model_filepath):
+    '''
+    Save the model to given filepath
+
+    INPUT
+    model: model to save
+    model_filepath: the file path where the model should be saved
+    '''
     # save the model to disk
     pickle.dump(model, open(model_filepath, 'wb'))
 

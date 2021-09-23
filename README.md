@@ -34,6 +34,7 @@ further libraries are used and should be preinstalled
 
     train_classifier.py - script with the nlp pipeline to build the machine learning model
 ### Instructions:
+
 1. Run the following commands in the project's root directory to set up your database and model.
 
     - To run ETL pipeline that cleans data and stores in database
@@ -49,6 +50,12 @@ further libraries are used and should be preinstalled
 
 3. Go to http://0.0.0.0:3001/
 
+### Summary
+
+The whole projects works as expected, when you follow the instruction above. If an error occurs by starting a script you probably need to install a missing module. Please 
+follow the instructions to install it with ```pip3 install YOUR_MISSING_MODULE``` and start the script again.
+
+The model which will be build in the build step is not perfect. On the sentences "We are more than 50 people sleeping on the street. Please help us find tent, food." it should also select the category "food" but it does not. Due to lack of resources on my local machine I stopped further tuning the model (it took 102 minutes). Also the model is nearly 800MB big and therefore not part of the repository. You've to build it on your one machine.
 
 ### Acknowledgements
 
