@@ -16,6 +16,9 @@ further libraries are used and should be preinstalled
 * [pandas](https://pandas.pydata.org/) 
 * [sqlalchemy](https://www.sqlalchemy.org/)
 * [sklearn](https://scikit-learn.org/)
+* [nltk](https://www.nltk.org/)
+* [plotly](https://plotly.com/python/)
+  
 
 ### Files
 
